@@ -7,11 +7,11 @@
 ### 2. Types of Graphs
 * __Undirected Graph__    
 Ex) Facebook Friend Relation
-* Directed Grpah  
+* __Directed Grpah__
 Ex) Instagram Followers
-* Weighted Graph   
+* __Weighted Graph__   
 Ex) Map with distance
-* Unweighted Graph   
+* __Unweighted Graph__   
 Ex) No value in Edge
 
 ### 3. BIG-O Compare
