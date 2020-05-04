@@ -60,14 +60,13 @@ Return Value: Index of FirstElement or -1
 2. In Array Literals
 3. In Object Literals 
 
-* Function Calls
-Each elements are passed to function
+1. Function Calls
 ```JS
 console.log(..."HELLO"); // H E L L O 
 Math.min(..."9832"); //2
 ```
 
-* Array Literals
+2. Array Literals
 ```JS
 const temp = [23, 2, -36, 50, 73];
 Math.min(temp); // returns NaN
@@ -79,19 +78,7 @@ Math.min.apply(null, temp); // returns -36
 Math.min (...temp) // returns -36
 ```
 
-* Examples
-```JS
-const origin = ["JeongShin", "DKU", "Software"];
-const copy = origin; // Copy is reference of origin
-copy.push("WHAT?");
-console.log(origin === copy); // true
-//   둘 다 push 된다. 둘 다 메모리에 같은 객체를 가르키기 때문. 정확한 의미의 copy가 아님. 
-const copy2 = [...origin]; //새로운 객체
-copy2.push("WHAT?");
-console.log(origin === copy); // false 
-```
-
-* Object Literals
+3. Object Literals
 ```JS
 const todos = [
     {user: "Jeong", completed: false, task: "Study"}
@@ -107,5 +94,17 @@ function addToDo2(newTodo){
     return [...todos, {...newTodo, completed: false}]
 }
 const newTodos = addToDo2({user: "Ikhyo", task: "Study"});
+```
+
+* Examples
+```JS
+const origin = ["JeongShin", "DKU", "Software"];
+const copy = origin; // Copy is reference of origin
+copy.push("WHAT?");
+console.log(origin === copy); // true
+//   둘 다 push 된다. 둘 다 메모리에 같은 객체를 가르키기 때문. 정확한 의미의 copy가 아님. 
+const copy2 = [...origin]; //새로운 객체
+copy2.push("WHAT?");
+console.log(origin === copy); // false 
 ```
 
