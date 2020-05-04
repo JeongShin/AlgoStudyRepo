@@ -1,6 +1,7 @@
 # Useful JS functions implementation
 
-### 1. Numbofcases
+### 1. Numbofcases.js
+> Code from @JunilHwang
 
 #### Code
 ```JS
@@ -60,13 +61,13 @@ Return Value: Index of FirstElement or -1
 3. In Object Literals 
 
 >functions
->Each elements are passed to function
+Each elements are passed to function
 ```JS
 console.log(..."HELLO"); // H E L L O 
 Math.min(..."9832"); //2
 ```
 
-> Array Literals
+Array Literals
 ```JS
 const temp = [23, 2, -36, 50, 73];
 Math.min(temp) // returns NaN
@@ -78,7 +79,7 @@ Math.min.apply(null, temp) // returns -36
 Math.min (...temp) // returns -36
 ```
 
-> Examples
+Examples
 ```JS
 const origin = ["JeongShin", "DKU", "Software"];
 const copy = origin; // Copy is reference of origin
@@ -90,7 +91,7 @@ copy2.push("WHAT?");
 console.log(origin === copy); // false 
 ```
 
-> Object Literals
+Object Literals
 ```JS
 const todos = [
     {user: "Jeong", completed: false, task: "Study"}
@@ -101,6 +102,7 @@ function addToDo(newTodo){
     todos.push(newTodo);
 }
 // Spread: 복사본을 생성 하기 때문에 변경 X.
+// 위의 코드에서 사용된 방법과 유사
 function addToDo(newTodo){
     return [...todos, {...newTodo, completed: false}]
 }
