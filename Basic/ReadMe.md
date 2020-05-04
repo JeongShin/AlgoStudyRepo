@@ -1,7 +1,7 @@
 # Useful JS functions implementation
 
 ### 1. Numbofcases.js
-> Code from @JunilHwang
+> Code from [@JunilHwang](https://github.com/DKU-STUDY/Algorithm/blob/master/%EB%AA%A8%EB%93%A0%EA%B2%BD%EC%9A%B0%EC%9D%98%EC%88%98/all.js)
 
 #### Code
 ```JS
@@ -60,26 +60,26 @@ Return Value: Index of FirstElement or -1
 2. In Array Literals
 3. In Object Literals 
 
->functions
+* Function Calls
 Each elements are passed to function
 ```JS
 console.log(..."HELLO"); // H E L L O 
 Math.min(..."9832"); //2
 ```
 
-Array Literals
+* Array Literals
 ```JS
 const temp = [23, 2, -36, 50, 73];
-Math.min(temp) // returns NaN
+Math.min(temp); // returns NaN
 
 // Without Using Spread
-Math.min.apply(null, temp) // returns -36
+Math.min.apply(null, temp); // returns -36
 
 // Using Spread 
 Math.min (...temp) // returns -36
 ```
 
-Examples
+* Examples
 ```JS
 const origin = ["JeongShin", "DKU", "Software"];
 const copy = origin; // Copy is reference of origin
@@ -91,7 +91,7 @@ copy2.push("WHAT?");
 console.log(origin === copy); // false 
 ```
 
-Object Literals
+* Object Literals
 ```JS
 const todos = [
     {user: "Jeong", completed: false, task: "Study"}
@@ -103,9 +103,9 @@ function addToDo(newTodo){
 }
 // Spread: 복사본을 생성 하기 때문에 변경 X.
 // 위의 코드에서 사용된 방법과 유사
-function addToDo(newTodo){
+function addToDo2(newTodo){
     return [...todos, {...newTodo, completed: false}]
 }
-const newTodos = addTodo({user: "Ikhyo", task: "Study"});
+const newTodos = addToDo2({user: "Ikhyo", task: "Study"});
 ```
 
