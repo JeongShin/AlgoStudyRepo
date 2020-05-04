@@ -60,13 +60,13 @@ Return Value: Index of FirstElement or -1
 2. In Array Literals
 3. In Object Literals 
 
-1. Function Calls
+Function Calls
 ```JS
 console.log(..."HELLO"); // H E L L O 
 Math.min(..."9832"); //2
 ```
 
-2. Array Literals
+Array Literals
 ```JS
 const temp = [23, 2, -36, 50, 73];
 Math.min(temp); // returns NaN
@@ -78,7 +78,7 @@ Math.min.apply(null, temp); // returns -36
 Math.min (...temp) // returns -36
 ```
 
-3. Object Literals
+Object Literals
 ```JS
 const todos = [
     {user: "Jeong", completed: false, task: "Study"}
@@ -96,7 +96,7 @@ function addToDo2(newTodo){
 const newTodos = addToDo2({user: "Ikhyo", task: "Study"});
 ```
 
-* Examples
+Examples
 ```JS
 const origin = ["JeongShin", "DKU", "Software"];
 const copy = origin; // Copy is reference of origin
