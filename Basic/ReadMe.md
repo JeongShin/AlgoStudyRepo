@@ -33,7 +33,7 @@ function hello(){
     console.log('hello');
 }
 ```
-함수 표현식으로 선언할 시 함수가 ***Hoisting*** 됨. 
+함수 표현식으로 선언할 시 함수가 Hoisting 됨. 
 
 ###### 1-1-2 Function Expression
 ```JS
@@ -43,7 +43,7 @@ let hello = function (){
 };  
 hello();
 ```
-함수가 변수 이름에 선언 되었기 때문에 변수 선언 전 hello()에선 ***Hoisting*** 되지 않는다. 
+함수가 변수 이름에 선언 되었기 때문에 변수 선언 전 hello()에선 **Hoisting*** 되지 않는다. 
 추가로 ES 6 Arrow Function이 사용 가능하다.  
 
 #### 1-2. indexOf()

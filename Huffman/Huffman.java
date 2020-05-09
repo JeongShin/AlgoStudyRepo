@@ -1,16 +1,19 @@
-import java.util.*;
+import java.util.;
 
-/*
- * DKU - Algorithm 출석 과제
- *
- * 32162417 소프트웨어 신정웅
- *
- * 문제: 허프만 트리 구현
- *
- * String은 모두 알파벳이고 소문자라는 가정하에 구현하였습니다.
- *
- * */
+/
+  DKU - Algorithm 8주차 - 춣석 과제
 
+  32162417 소프트웨어 신정웅
+
+  문제: Huffman Code를 구하기 위한 Huffman tree 구현
+
+  return 값:
+  각 char에 해당 되는 Huffman Code
+
+  한계점:
+  입력, 정의된 string에 대한 code 값만 구해냄
+
+  /
 public class Huffman {
     static class node implements Comparable<node> {
         private char data;

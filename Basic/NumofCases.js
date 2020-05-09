@@ -1,4 +1,4 @@
-/*Code from @JunilHwang*/
+/Code from @JunilHwang/
 function solution(arr) {
     const len = arr.length;
     // f 객체 생성
