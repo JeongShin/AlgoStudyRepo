@@ -1,22 +1,4 @@
-/*
- * DKU - Algorithm 8주차 - 1 예제 프로그램
- *
- * 32162417 소프트웨어 신정웅
- *
- * 문제: Greedy Algorithm - Knapsack Problem
- *
- * 조건:
- * p -> profit, 이익  w -> weight, 무게
- *
- * return 값:
- * 가방에 넣을수 있는 item의 개수에 대한 (double 형) 배열
- *
- * 한계점:
- * zero - one knapsack의 경우, 즉 가져오거나 못가져오거나 분할이 안되는
- * 경우는 feasible solution 을 구하지 못한다.
- *
- * 시간복잡도: O(n log n)
- * */
+
 
 function Knapsack(n, m) {
     const p = [25, 24, 15];
