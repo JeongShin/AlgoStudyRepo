@@ -8,7 +8,8 @@ p : profit, 이익 w: weight, 무게
 * 리턴 값    
 가방에 넣을수 있는 item 개수에 대한 배열
 * 한계점     
-zero-one knapsack의 경우, 즉 가져오거나 못가져오거나 분할이 불가능한 경우 feasible solution 을 구하지 못한다.
+zero-one knapsack의 경우, 즉 가져오거나 못가져오거나 분할이 불가능한 경우 feasible solution 을 구하지 못한다. 
+    * zero - one knapsack 의 경우 solution : [Dynamic Knapsack](https://github.com/JeongShin/AlgoStudyRepo/tree/master/Greedy#1---1-problem)
 * 시간 복잡도     
 O(n logn)
 
