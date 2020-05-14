@@ -1,4 +1,4 @@
-# 그리디 알고리즘 정리 
+# Greedy Algorithm
 ## 1. Knapsack 
 > DKU - Algorithm 8 주차 - 1 예제 프로그램 
 

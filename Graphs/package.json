@@ -1,0 +1,8 @@
+{
+  "name": "graphs",
+  "version": "1.0.0",
+  "main" : "DFS_BFS.js",
+  "scripts": {
+    "start": "node -r esm DFS_BFS.js"
+  }
+}
