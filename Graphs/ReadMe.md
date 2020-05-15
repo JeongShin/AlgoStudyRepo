@@ -33,17 +33,18 @@ Ex) No value in Edge
 
 
 ### 5. Graph Traversal
-#### 5 - 1. Graph Traversal Uses
-> * Web Crawlers - 웹 크롤링은 그래프 탐색과 같은 원리
-> * Facebook Friends Graph
-> * Shortest path problems
-
 ![GraphExample](./IMG/GraphExample.png)
 
-#### 5 - 2. DFS - Depth First Traversal
-    * 이웃한 노드를 노드 선택 기준에 따라 하나씩 방문
-    * 이미 방문한 노드에 대한 정보가 필요함 (재방문 방지)
-    
+#### 5 - 1. Graph Traversal Uses
+* Web Crawlers - 웹 크롤링은 그래프 탐색과 같은 원리
+* Facebook Friends Graph
+* Shortest path problems
+
+#### 5 - 2. Implement Approach
+    이웃한 노드를 노드 선택 기준에 따라 하나씩 방문
+    이미 방문한 노드에 대한 정보가 필요함 (재방문 방지)
+#### 5 - 3. DFS - Depth First Traversal
+
 1. ***Pseudo Code - Recursion***
 ```
 DFS (vertex):
@@ -72,7 +73,7 @@ DFS (start):
 ```
 > Stack은 JS의 기본 array의 push(), pop()
 
-3. BFS 
+#### 5 - 3. BFS - Breadth First Traversal
 ***Pseudo Code*** 
 ```
 BFS (start):
