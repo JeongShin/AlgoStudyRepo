@@ -1,38 +1,39 @@
-import java.util.;
+import java.io.*;
+import java.util.*;
 
-/
-  DKU - Algorithm 8주차 - 춣석 과제
+/*
+ * DKU - Algorithm 3번 과제
+ *
+ * 32162417 소프트웨어 신정웅
+ *
+ * 문제: 텍스트 파일을 이용한 허프만 트리 구현
+ *
+ * String은 모두 알파벳이고 소문자라는 가정하에 구현하였습니다.
+ *
+ * */
 
-  32162417 소프트웨어 신정웅
-
-  문제: Huffman Code를 구하기 위한 Huffman tree 구현
-
-  return 값:
-  각 char에 해당 되는 Huffman Code
-
-  한계점:
-  입력, 정의된 string에 대한 code 값만 구해냄
-
-  /
 public class Huffman {
     static class node implements Comparable<node> {
-        private char data;
+        private String data;
         private int count;
         private node left;
         private node right;
         public String code;
-        public node(char data, int count) {
+
+        public node(String data, int count) {
             this.data = data;
             this.count = count;
             this.code = "";
             left = right = null;
         }
+
         @Override
         public int compareTo(node o) {
             return this.count - o.count;
         }
 
     }
+
     static class tree {
         private node root_;
 
@@ -42,21 +43,60 @@ public class Huffman {
     }
 
     public static void main(String[] args) {
-        String s = "abbcdefaabbcddefcdbadd";
-        char[] data = s.toCharArray();
+        char[] buff = new char[5000];
+        int buff_count = 0;
+        System.out.println("Choose file name to read 1. LoremIpsum\t2. CNN news\t3. Wikipedia Document");
+        Scanner scanner = new Scanner(System.in);
+        int option = scanner.nextInt();
+        String path;
+        switch (option) {
+            case 1:
+                path = "LoremIpsum.txt";
+                break;
+            case 2:
+                path = "CNN_Coronavirous.txt";
+                break;
+            case 3:
+                path = "Wiki.txt";
+                break;
+            default:
+                System.out.println("Invalid Option");
+                return;
+        }
+        File file = new File(path);
+        try {
+            try {
+                FileReader fr = new FileReader(file);
+                int curr;
+                while ((curr = fr.read()) != -1) {
+                    if ((65 <= curr) && (curr <= 90) || ((97 <= curr) && (122 >= curr)) || (curr == 32)) {
+                        if (curr != 32 && curr <= 90)
+                            curr += 32;
+                        buff[buff_count++] = (char) curr;
+                    }
+                }
+                fr.close();
+            } catch (FileNotFoundException e) {
+                e.getStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // Only for lowercase alphabet
-        int[] data_count = new int[26];
-        List<node> huff_nodes = new ArrayList<>();
+        int[] data_count = new int[27];
 
+        List<node> huff_nodes = new ArrayList<>();
         // 1. Get Count for each alphabet
-        for (int i = 0; i < s.length(); i++) {
-            int idx = (int) data[i] - 97;
+        for (int i = 0; i < buff_count; i++) {
+            int idx = (int) buff[i] == 32 ? 26 : (int) buff[i] - 97;
             data_count[idx]++;
         }
         // 1 - 1. Create Nodes for Tree
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 27; i++) {
             if (data_count[i] != 0) {
-                huff_nodes.add(new node((char) (i + 97), data_count[i]));
+                huff_nodes.add(new node(i != 26 ?
+                        Character.toString((char) (i + 97)) : "SPACE"
+                        , data_count[i]));
             }
         }
 
@@ -76,30 +116,30 @@ public class Huffman {
         // 2 - 2. Build Tree
         tree huff_tree = new tree(node_queue.poll());
 
-        while (!node_queue.isEmpty()) {
 
+        while (!node_queue.isEmpty()) {
             // Initialize left node to root
-            node left = huff_tree.root_;
+            node right = huff_tree.root_;
 
             // isMin to check root is min in Queue
             boolean isMin = true;
             for (node curr : node_queue)
-                isMin = curr.count > left.count;
+                isMin = curr.count > right.count;
 
             // if root is not min create new subtree & enqueue this root
             if (!isMin) {
-                node_queue.offer(left);
-                left = node_queue.poll();
+                node_queue.offer(right);
+                right = node_queue.poll();
             }
 
-            node right = node_queue.poll();
+            node left = node_queue.poll();
 
             // Unless String Length is less than 2 (which is no meaning of HuffmanCode),
             // tree will have at least 2 nodes
             assert left != null && right != null;
 
             // Non-leaf Nodes do not have data (char) to save
-            node parent = new node((char)0, left.count + right.count);
+            node parent = new node(" ", left.count + right.count);
 
             // Set pointers for parent node
             parent.left = left;
@@ -114,23 +154,23 @@ public class Huffman {
         node_queue.offer(huff_tree.root_);
 
         // Visit nodes level order & update code
-        while (!node_queue.isEmpty()){
+        while (!node_queue.isEmpty()) {
             node curr = node_queue.poll();
-            // Case 1. curr -> left child : current code + "0"
-            if(curr.left!=null) {
-                curr.left.code=curr.code.concat("0");
-                node_queue.offer(curr.left);
-            }
-
             // Case 2. curr -> right child : current code + "1"
-            if(curr.right != null) {
-                curr.right.code=curr.code.concat("1");
+            if (curr.right != null) {
+                curr.right.code = curr.code + "1";
                 node_queue.offer(curr.right);
             }
+            // Case 1. curr -> left child : current code + "0"
+            if (curr.left != null) {
+                curr.left.code = curr.code + "0";
+                node_queue.offer(curr.left);
+            }
         }
+
         // Print Huffman Code Result
         System.out.println("\nHuffman Code Result");
-        for(node curr : huff_nodes)
+        for (node curr : huff_nodes)
             System.out.println(curr.data + " : " + curr.code);
     }
 }
