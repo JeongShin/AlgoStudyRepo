@@ -1,4 +1,4 @@
-# Graphs 
+# Graphs Basics
 ### 1. Essential Graph Terms  
 * __Vertex__ : a node 
 * __Edge__ : connection between Nodes
@@ -87,3 +87,9 @@ BFS (start):
                 Q.push(N)
 ```
 > Queue는 JS의 기본 array의 push(), shift()
+
+*** 
+# Dijkstra's Algorithm 
+### What is Dijkstra
+Finding shortest path on weighted graph 
+
