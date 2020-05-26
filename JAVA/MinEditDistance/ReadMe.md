@@ -98,8 +98,11 @@ public static ArrayList<String> backtrack(s dest) {
     return path;
 }
 ```
-	역추적에 대한 구현 dfs 재귀적 호출의 방법으로 다음과 같이 이루어 집니다. 단 자바 언어 특성상 [-1] 음수 인덱스로 접근이 에러로 발생하기 때문에 null 인지 확인하는 대신 위치 값 xpos, ypos 이 0에 일때에 대한 처리를 해줍니다.  여기서 고려해야 할 상황이 2가지 발생 합니다. 
+역추적에 대한 구현 dfs 재귀적 호출의 방법으로 다음과 같이 이루어 집니다. 
+단 자바 언어 특성상 [-1] 음수 인덱스로 접근이 에러로 발생하기 때문에 null 인지 확인하는 대신 위치 값 xpos, ypos 이 0에 일때에 대한 처리를 해줍니다.  
+여기서 고려해야 할 상황이 2가지 발생 합니다. 
 Two Exceptions to Consider 
+
 	1. xpos, ypos 이 모두 0 인 경우는 탐색이 끝났음을 의미합니다. -> End of Search 
 	2. xpos, ypos 중 둘중 하나가 0 인 경우는 더 이상 왼쪽 혹은 위로 갈 수 없기 때문에 0이 아닌 방향으로 이동 합니다.  -> Adjecent to upmost or leftmost 
 
