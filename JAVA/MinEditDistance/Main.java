@@ -13,7 +13,6 @@
  *
  * */
 
-package com.company;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +24,6 @@ public class Main {
     static int lenX;
     static int lenY;
     static s[][] table;
-
 
     /* Class Implementation */
     public static class s {
@@ -43,8 +41,8 @@ public class Main {
     }
 
     /* Initialize Table Method */
-    public static s[][] init_table(String x, String y) {
-        s[][] table = new s[lenX + 1][lenY + 1];
+    public static void init_table(String x, String y) {
+        table = new s[lenX + 1][lenY + 1];
         for (int i = 0; i <= lenX; i++) {
             String xpart = x.substring(i);
             for (int j = 0; j <= lenY; j++) {
@@ -61,15 +59,14 @@ public class Main {
                 table[i][j] = new s(ypart + xpart, min, i, j);
             }
         }
-        return table;
     }
 
     /* Print Table Method */
-    public static void print_table(s[][] table) {
-        for (s[] el : table) {
-            for (s val : el) {
-                if (val != null) {
-                    String out = val.data + " : " + val.weight;
+    public static void print_table() {
+        for (s[] row : table) {
+            for (s curr : row) {
+                if (curr != null) {
+                    String out = curr.data + " : " + curr.weight;
                     System.out.print(String.format("%15s", out));
                 }
             }
@@ -133,17 +130,17 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         /* 사용자로부터 문자열과 문자열의 길이를 입력 받습니다. */
-        System.out.println("Enter length of string for x : ");
+        System.out.print("Enter length of string for x : ");
         lenX = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter length of string for y : ");
+        System.out.print("Enter length of string for y : ");
         lenY = Integer.parseInt(scanner.nextLine());
 
         /* x,y의 String을 입력 받습니다. 만약 입력 받은 문자열의 길이가 더 짧은 경우 */
-        System.out.println("Enter string x : ");
+        System.out.print("Enter string x : ");
         String x = scanner.nextLine();
         lenX = Math.min(lenX, x.length());
 
-        System.out.println("Enter string y : ");
+        System.out.print("Enter string y : ");
         String y = scanner.nextLine();
         lenY = Math.min(lenY, y.length());
 
@@ -152,11 +149,10 @@ public class Main {
         y = y.substring(0, lenY);
 
         /* x, y로 weight table 을 생성 합니다 */
-        table = init_table(x, y);
+        init_table(x, y);
 
         /* table 을 출력 합니다 */
-        System.out.println();
-        print_table(table);
+        print_table();
 
         /* 목적지 string 은 table 기준 오른쪽 맨 하단에 위치 합니다 */
         s dest = table[lenX][lenY];
@@ -165,10 +161,9 @@ public class Main {
         ArrayList<String> path = backtrack(dest);
 
         /* Path 를 출력 합니다 */
-        System.out.println(path);
+        System.out.println("path : " + path);
 
         /* Path 의 validation 을 검사 합니다 */
         is_path_valid(path, x, y);
-
     }
 }
