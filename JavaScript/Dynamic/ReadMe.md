@@ -97,3 +97,18 @@ d (i, j) = l 로 최소 노드에 대한 기록을 남긴다
 
 v1 -> v2 : d(1, 1) = 2 -> v3 : d(2, 2) = 7 -> v4 : d(3, 7) = 10
 
+
+## 피보나치 수열 동적 계획법
+```JAVA
+int fibonacci(int n) {
+    if( n == 1 || n == 2 )
+        return 1;
+    int f[] = new int[n+1];
+    f[1] = f[2] = 1;
+    for(int i=2; i<=n; i++)
+        f[i] = f[i-1] + f[i-2];
+    return f[n];
+}
+```
+
+시간복잡도 : O(n)
